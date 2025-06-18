@@ -1,6 +1,7 @@
 app:
   title: Scaffolded Backstage App
   baseUrl: http://localhost:3000
+  # baseUrl: https://backstage-devportal.fly.dev
 
 organization:
   name: My Company
@@ -15,6 +16,10 @@ backend:
   baseUrl: http://localhost:7007
   listen:
     port: 7007
+  # baseUrl: https://backstage-devportal.fly.dev
+  # listen:
+  #   port: 3000
+  #   host: 0.0.0.0
     # Uncomment the following host directive to bind to specific interfaces
     # host: 127.0.0.1
   csp:
@@ -33,7 +38,7 @@ backend:
     client: pg
     connection:
       host: ${POSTGRES_HOST}
-      port: ${POSTGRES_PORT}
+      port: 5432
       user: ${POSTGRES_USER}
       password: ${POSTGRES_PASSWORD}
 
@@ -106,10 +111,16 @@ catalog:
         - allow: [Template]
 
     # Local example organizational data
+    # - type: file
+    #   target: ../../examples/org.yaml
+    #   rules:
+    #     - allow: [User, Group]
+    
     - type: file
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
+
 
     ## Uncomment these lines to add more example data
     # - type: url
